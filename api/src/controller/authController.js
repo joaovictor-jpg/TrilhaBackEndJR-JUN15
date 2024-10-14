@@ -1,6 +1,8 @@
+const { Sequelize } = require('sequelize');
 const Controller = require('./Controller.js');
 const AuthServices = require('../server/authServices.js');
-const { Sequelize } = require('sequelize');
+const UserNaoEncontrodado = require('../errors/userNaoEncontrodado.js');
+const SenhaOuLoginIncorreto = require('../errors/senhaOuLoginIncorreto.js');
 
 const auth = new AuthServices();
 
@@ -25,6 +27,12 @@ class AuthController extends Controller {
         return res.status(error.status).send({
           message: 'Error',
           errors: error.message
+        });
+      }
+      if (error instanceof SenhaOuLoginIncorreto) {
+        return res.status(error.status).send({
+          message: 'Error',
+          error: error.message
         });
       }
       return res.status(500).send({
