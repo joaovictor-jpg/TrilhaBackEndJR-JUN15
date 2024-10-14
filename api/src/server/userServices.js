@@ -15,7 +15,7 @@ class UserServices extends Services {
 
     dto.password = await bcrypt.hash(dto.password, 10);
 
-    return await super.createUser(dto);
+    return await super.create(dto);
   }
 }
 

@@ -29,10 +29,10 @@ class Controller {
     }
   }
 
-  async createUser(req, res) {
+  async create(req, res) {
     try {
       const { name, email, password } = req.body;
-      const user = await this.entidadeService.createUser({ name, email, password });
+      const user = await this.entidadeService.create({ name, email, password });
       return res.status(201).send(user);
     } catch (error) {
       if (error instanceof Sequelize.ValidationError) {
@@ -53,7 +53,7 @@ class Controller {
     const { id } = req.params;
     try {
       const dto = req.body;
-      const linhasAtualizadas = await this.entidadeService.updateUser(dto, Number(id));
+      const linhasAtualizadas = await this.entidadeService.update(dto, Number(id));
       if (linhasAtualizadas <= 0) res.status(400).send({ error: 'Error na requisição' });
       return res.status(200).send({ message: 'Usuário atualizado' });
     } catch (error) {
@@ -61,10 +61,10 @@ class Controller {
     }
   }
 
-  async deletarUsuario(req, res) {
+  async delete(req, res) {
     const { id } = req.params;
     try {
-      const linhasAlteradas = await this.entidadeService.deleteUsers(id);
+      const linhasAlteradas = await this.entidadeService.delete(id);
       if(linhasAlteradas <= 0) res.status(400).send({ message: 'Erro na dekeção de usuário' });
       return res.status(200).send({ message: 'Usuário deletado' });
     } catch (error) {

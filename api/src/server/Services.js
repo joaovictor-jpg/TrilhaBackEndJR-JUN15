@@ -21,13 +21,13 @@ class Service {
     });
   }
 
-  async createUser(user) {
-    return await database[this.model].create(user);
+  async create(model) {
+    return await database[this.model].create(model);
   }
 
-  async updateUser(user, id) {
+  async update(model, id) {
     return await database[this.model].update(
-      user,
+      model,
       {
         where: {
           id : id
@@ -36,7 +36,7 @@ class Service {
     );
   }
 
-  async deleteUsers(id) {
+  async delete(id) {
     return await database[this.model].destroy({
       where: {
         id
