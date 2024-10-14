@@ -4,7 +4,6 @@ class Controller {
   constructor(entidadeService) {
     this.entidadeService = entidadeService;
   }
-
   async findAll(_, res) {
     try {
       const users = await this.entidadeService.findAll();

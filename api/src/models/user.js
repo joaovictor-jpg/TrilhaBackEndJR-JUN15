@@ -48,10 +48,6 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {
           msg: 'A senha é obrigatório'
-        },
-        is: {
-          args: /^[a-zA-Z0-9]+$/, // Apenas letras e números
-          msg: 'A senha deve conter apenas caracteres alfanuméricos.'
         }
       }
     }
