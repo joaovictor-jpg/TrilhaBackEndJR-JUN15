@@ -27,6 +27,12 @@ describe('Teste de userServices final feliz', () => {
     const linhasAlteradas = await user.updateUser({ name }, 1);
     expect(linhasAlteradas[0]).toEqual(1);
   });
+
+  it('Deve retorna user pelo email', async () => {
+    const email = 'teste2@gmail.com';
+    const userByemail = await user.findByEmail(email);
+    expect(userByemail.email).toBe(email);
+  });
 });
 
 describe('Teste de userServices final Triste', () => {

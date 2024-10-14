@@ -13,6 +13,14 @@ class Service {
     return await database[this.model].findByPk(id);
   }
 
+  async findByEmail(email) {
+    return await database[this.model].findOne({
+      where: {
+        email
+      }
+    });
+  }
+
   async createUser(user) {
     return await database[this.model].create(user);
   }
