@@ -1,6 +1,7 @@
 const express = require('express');
 const user = require('./userRoute.js');
 const auth = require('./authRoute.js');
+const tarefa = require('./tarefaRoute.js');
 
 const router = app => {
   app.route('/').get((_, res) => {
@@ -8,8 +9,9 @@ const router = app => {
   });
   app.use(
     express.json(),
+    auth,
     user,
-    auth
+    tarefa
   );
 };
 
